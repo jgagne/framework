@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+
+   /*
+  ------------------------------
+  resets / control
+  ------------------------------
+  */
+
+  /* --- baseline `font-size` `line-height` `font-family` --- */
+
+  html {
+    font: 100%/1.15 sans-serif;
+    }
+
+  /*
+  a. `max-width` + `padding-right` + `padding-left` = `54.545454545454545em`
+  `54.54545454545454em` x `font-size: 110%;` (wide-screen column layout) = `60em`
+  */
+
+  body {
+    max-width: 52.545454545454545em; /* a */
+    padding: 0 1em;
+    margin: auto;
+    }
+
+  /*
+  ------------------------------
+  flexible images
+  ------------------------------
+  */
+
+  img {
+    max-width: 100%;
+    height: auto;
+    }
+
+  /*
+  ------------------------------
+  typography / content first
+  ------------------------------
+  */
+
+  /* --- header --- */
+
+  header {
+    position: relative;
+    }
+
+  /* abc / brand */
+
+  .brand {
+    font-family: monospace;
+    font-size: 1.425em;
+    }
+
+  /* normal weight */
+
+  .normal {
+    font-weight: normal;
+    }
+
+  /* --- summary / details --- */
+
+  /* readme */
+
+  #readme {
+    max-width: 32em;
+    }
+
+  #readme summary {
+    position: relative;
+    top: -.325em;
+    font-family: monospace;
+    font-size: 1.2em;
+    visibility: hidden; /* hide details marker */
+    cursor: pointer;
+    }
+
+  #readme summary b {
+    float: left;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    visibility: visible; /* show summary text */
+    padding-bottom: .1em;
+    border-bottom: 1px solid #000;
+    }
+
+  #readme p {
+    font-size: .85em;
+    line-height: 1.5;
+    }
+
+  #readme footer {
+    max-width: 22em;
+    }
+
+  #readme footer p {
+    line-height: 1.15;
+    }
+
+  /* --- generated (content) --- */
+
+  /* abc / lettering  */
+
+  .rows-cols li:before {
+    font: bold 2em/1.1 monospace;
+    }
+
+  /* first child */
+
+  .rows-cols li:first-child:before {
+    content: "a";
+    }
+
+  /* second child */
+
+  .rows-cols li:nth-child(2):before {
+    content: "b";
+    }
+
+  /* third child */
+
+  .rows-cols li:nth-child(3):before {
+    content: "c";
+    }
+
+  /* --- paragraph(s) --- */
+
+  p {
+    font: 1em/1.45 sans-serif;
+    margin-top: .8em;
+    margin-bottom: 0;
+    }
+
+  /* editable dummy text / abc ipsum */
+
+  .dummy-text:focus {
+    background: #fff;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #000;
+    outline: 0;
+    margin-bottom: -3px;
+    }
+
+  /*
+  ------------------------------
+  layout(s) / fluid grids
+  ------------------------------
+  */
+
+  /* --- rows (3) --- */
+
+  .rows-cols {
+    list-style: none;
+    padding-left: 0;
+    border: 1px dashed #000;
+    }
+
+  .rows-cols li {
+    padding: 1em;
+    border-top: 1px dashed #000;
+    }
+
+  .rows-cols li:first-child {
+    background: #cff;
+    border-top: 0;
+    }
+
+  .rows-cols li:nth-child(2) {
+    background: #cfc;
+    }
+
+  .rows-cols li:nth-child(3) {
+    background: #ffc;
+    }
+
+  /*
+  ------------------------------
+  breakpoint(s) / media queries
+  ------------------------------
+  */
+
+  /* --- rows (1) / columns (2) --- */
+
+  @media (min-width: 42em) {
+
+  body {
+    font-size: 105%;
+    }
+
+  /* readme / reposition */
+
+  #readme summary {
+    position: absolute;
+    top: .8em;
+    right: 0;
+    }
+
+  /*
+  b. classic clear fix (see also: modern — micro clear fix)
+  */
+
+  .rows-cols {
+    padding-bottom: 2%;
+    overflow: hidden; /* b */
+    }
+
+  /* cols / span half-width */
+
+  .rows-cols li {
+    float: left;
+    width: 46%;
+    padding: 2% 2% 999em;
+    border-left: 1px dashed #000;
+    margin-bottom: -999em;
+    margin-left: -1px;
+    }
+
+  /* rows / span full-width */
+
+  .rows-cols li:first-child {
+    width: 96%;
+    border-left: 0;
+    padding-bottom: 2%;
+    margin-bottom: 0;
+    margin-left: 0;
+    }
+
+  }
+
+  /* --- columns (3) --- */
+
+  @media (min-width: 60em) {
+
+  body {
+    font-size: 110%;
+    }
+
+  /* cols / span third-width */
+
+  .rows-cols li,
+  .rows-cols li:first-child {
+    width: 29.333333333333333%;
+    padding: 2% 2% 999em;
+    border-top: 0;
+    margin-bottom: -999em;
+    }
+
+  .rows-cols li {
+    border-left: 1px dashed #000;
+    }
+
+  }
+
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>abc framework</title>
+  <meta name="description" content="A starter framework for developing simple row to column, small to wide screen, responsive layouts.">
+  <meta name="author" content="Justin Gagne">
+</head>
+<body>
+
+<header>
+  <h1><span class="brand">abc</span> <span class="normal">framework</span></h1>
+  <details id="readme" role="note">
+  <summary><b>readme</b></summary>
+  <p>A <em>starter framework</em></mark> for developing simple row to column, small to wide screen, responsive layouts using classic float-based layout and a bit of modern code.</p>
+  <footer note="role">
+   <p><small>A <i>single-serving</i> website developed with BBEdit on a <time datetime="2017-02-10">February</time> snow day in Beverly, <em>Make it in Massachusetts</em>™.</small></p>
+  </footer>
+</details>
+</header>
+
+<ol class="rows-cols">
+  <li>
+    <p class="summary">
+      <em>starter framework</em> for developing simple row to column, small to wide screen, responsive layouts.
+    </p>
+  <li>
+    <p class="dummy-text abc-ipsum" contenteditable="true">
+      cause breakpoints are key. abc defgh ijk lmnop qrst uvwxyz. <!-- a bc def g hi jklmn op qrst u vwxyz. -->
+    </p>
+  </li>
+  <li>
+    <p class="dummy-text abc-ipsum" contenteditable="true">
+      source code for details. abc defg hi jklm no pqrst uv wxyz.
+    </p>
+  </li>
+</ol>
+
+</body>
+</html>
